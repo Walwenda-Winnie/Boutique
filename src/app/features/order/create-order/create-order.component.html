@@ -1,0 +1,251 @@
+<div class="col-md-7 offset-md-8">
+    <form id="order-form" class="smart-form" novalidate="novalidate" [saUiValidate]="validationOptions"#registerForm="ngForm" (ngSubmit)="register(registerForm)"  >
+      <div sa-widget [editbutton]="false" [custombutton]="false"></div>
+        <header>
+          <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+          Order services
+        </header>
+      
+        <fieldset>
+          <div class="row">
+            <section class="col col-6">
+              <label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+                <input type="email" #customeremailid (ngModel)="customeremailid" class="form-control" name="customeremailid" placeholder="CustomerEmailId"/>
+              </label>
+            </section>
+            <section class="col col-6">
+              <label class="input"> <i class="icon-append fa fa-cube"></i>
+                <input type="text" name="orderType"#orderType (ngModel)="orderType" placeholder="Order Type" class="form-control" />
+              </label>
+            </section>
+          </div>
+          
+          <div class="row">
+            <section class="col col-6">
+              <label class="input"> <i class="icon-append fa fa-cubes"></i>
+                <input type="text" name="amount" placeholder="Amount" #amount (ngModel)="amount" class="form-control"/>
+              </label>
+            </section>
+      
+          <div class="row">
+            <section class="col col-6">
+              <label class="input"> <i class="icon-append fa fa-cubes"></i>
+                <input type="text" name="description" placeholder="Description" class="form-control" #description (ngModel)="description"/>
+              </label>
+            </section>
+            <section class="col col-6">
+                <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                  <input type="text" name="orderDate" #orderDate (ngModel)="orderDate"  class="form-control" placeholder="OrderDate">
+                </label>
+              </section>
+            <section class="col col-6">
+              <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                <input type="text" name="deliveryDate" #deliveryDate (ngModel)="deliveryDate" class="form-control" placeholder="DeliveryDate">
+              </label>
+            </section>
+    
+          </div>
+      
+        <fieldset>
+          <div class="row">
+            <section class="col col-6">
+              <label class="select">
+                <select name="interested">
+                  <option value="0" disabled>Interested In</option>
+                  <option value="1">jacket</option>
+                  <option value="2">jeans trouser</option>
+                  <option value="3">Shirt</option>
+                  <option value="4">Dress</option>
+                  <option value="5">Heels</option>
+                  <option value="6">Fedora cap</option>
+                  <option value="7">Suit</option>
+                  <option value="8">Snickers</option>
+                </select> <i></i> </label>
+            </section>
+            <section class="col col-6">
+              <label class="select">
+                <select name="budget">
+                  <option value="0" disabled>Budget</option>
+                  <option value="1">$1o</option>
+                  <option value="2">$10</option>
+                  <option value="3">$8.0</option>
+                  <option value="4">$20</option>
+                  <option value="5">$25</option>
+                  <option value="6">$5.0</option>
+                  <option value="7">$20</option>
+                  <option value="8">$20</option>
+                </select> <i></i> </label>
+            </section>
+          </div>
+      
+          <div class="row">
+            <section class="col col-6">
+              <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                <input type="text" name="startdate" id="startdate"#startdate (ngModel)="startdate" [saUiDatepicker]="{minRestrict:'#finishdate'}" placeholder="Expected start date"/>
+              </label>
+            </section>
+            <section class="col col-6">
+              <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                <input type="text" name="finishdate" id="finishdate" #finishdate (ngModel)="finishdate" [saUiDatepicker]="{maxRestrict:'#startdate'}" placeholder="Expected finish date"/>
+              </label>
+            </section>
+          </div>
+      
+          <section>
+            <sa-file-input></sa-file-input>
+          </section>
+      
+          <section>
+            <label class="textarea"> <i class="icon-append fa fa-comment"></i>
+              <textarea rows="5" name="comment"#comment (ngModel)="comment" placeholder="Tell us about your Order "></textarea>
+            </label>
+          </section>
+        </fieldset>
+        <footer>
+          
+
+            <input type="submit" value="Register" class="btn btn-primary w-100">
+  
+        </footer>
+          </div>
+          
+
+        <div class="mt-5">
+            <table class="table table-bordered">
+                <thead class="thead">
+                    <tr>
+                        <th>Order Type</th>
+                        <th>Order Date</th>
+                        <th>Amount</th>
+                        <th>CustomerEmailId</th>
+                        <th>Description</th>
+                        <th>Delivery Date</th>
+                        <th>Interested In </th>
+                        <th>Budget</th>
+                        <th>Start Date</th>
+                        <th>Finish Date</th>
+                        <th>Comment</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+    
+    
+    
+                    </tr>
+    
+                </thead>
+                <tbody class="tbody">
+                    <tr *ngFor="let order of orderDetails">
+                        <td>{{order.orderType}}</td>
+                        <td>{{order.orderDate}}</td>
+                        <td>{{order.amount}}</td>
+                        <td>{{order.customeremailid}}</td>
+                        <td>{{order.description}}</td>
+                        <td>{{order.deliveryDate}}</td>
+                        <td>{{order.interested}}</td>
+                        <td>{{order.budget}}</td>
+                        <td>{{order.startdate}}</td>
+                        <td>{{order.finishdate}}</td>
+                        <td>{{order.comment}}</td>
+                        
+                        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"(click)="edit(order)">Edit</button></td>
+    
+                        <td><button type="button" class="btn btn-danger" (click)="deleteOrder(order)">Delete</button></td>
+    
+                    </tr>
+    
+                </tbody>
+            </table>
+        </div>
+    
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Update Order</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+            </div> 
+            <div class="modal-body">
+                <form #updateForm="ngForm" (ngSubmit)="updateOrder()">
+                    <div class="form-group">
+        
+                        <label for="id"> Id :</label>
+                        <input type="number" disabled #id [(ngModel)]="orderToUpdate.id " name="id" id="id" class="form-control" placeholder=" Id">
+                    </div>
+    
+                    <div class="form-group">
+        
+                        <label for="orderType">Order Type :</label>
+                        <input type="text" #orderType [(ngModel)]="orderToUpdate.orderType " name="orderType" id="orderType" class="form-control" placeholder="Order Type  ">
+                    </div>
+                    
+                    <div class="form-group">
+        
+                        <label for="orderDate">Order Date :</label>
+                        <input type="date" #orderDate [(ngModel)]="orderToUpdate.orderDate " name="orderDate" id="orderDate" class="form-control" placeholder="Order Date">
+                    </div>
+                    
+                    <div class="form-group">
+        
+                        <label for="amout">Amount :</label>
+                        <input type="number" #amount [(ngModel)]="orderToUpdate.amount" name="amount" id="amount" class="form-control" placeholder="Amount">
+                    </div>
+                    
+                    <div class="form-group">
+        
+                        <label for="customeremailid">CustomerEmailId :</label>
+                        <input type="email" #customeremailid [(ngModel)]="orderToUpdate.customeremailid " name="customeremailid" id="customeremailid" class="form-control" placeholder="CustomerEmailId">
+                    </div>
+                    
+                    <div class="form-group">
+        
+                        <label for="description">Description :</label>
+                        <input type="text" #description [(ngModel)]="orderToUpdate.description " name="description" id="description" class="form-control" placeholder="Description">
+                    </div>
+                    <div class="form-group">
+        
+                        <label for="deliveryDate">Delivery Date :</label>
+                        <input type="date" #deliveryDate [(ngModel)]="orderToUpdate.deliveryDate " name="deliveryDate" id="deliveryDate" class="form-control" placeholder="Delivery Date">
+                    </div>
+                    <div class="form-group">
+        
+                        <label for="interested">Interested In :</label>
+                        <input type="text" #interested [(ngModel)]="orderToUpdate.interested " name="interested" id="interested" class="form-control" placeholder="Interested In">
+                    </div>
+                    <div class="form-group">
+        
+                        <label for="budget">Budget :</label>
+                        <input type="number" #budget [(ngModel)]="orderToUpdate.budget " name="budget" id="budget" class="form-control" placeholder="budget">
+                    </div>
+                    <div class="form-group">
+        
+                        <label for="startdate"> Start Date :</label>
+                        <input type="date" #startdate [(ngModel)]="orderToUpdate.startdate " name="startdate" id="startdate" class="form-control" placeholder="Start Date">
+                    </div>
+                    <div class="form-group">
+        
+                        <label for="finishdate">Finish Date :</label>
+                        <input type="date" #finishdate [(ngModel)]="orderToUpdate.finishdate " name="finishdate" id="finishdate" class="form-control" placeholder="Finish Date">
+                    </div>
+                    <div class="form-group">
+        
+                        <label for="comment"> Comment :</label>
+                        <input type="text" #comment [(ngModel)]="orderToUpdate.comment " name="comment" id="comment" class="form-control" placeholder="Comment">
+                    </div>
+                    
+                    <div class="form-group">
+        
+                        <input type="submit" value="Update" class="btn btn-primary w-100">
+                    </div>
+        
+                </form>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    
+      

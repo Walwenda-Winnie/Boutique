@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="ISO-8859-1">
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <span class="navbar-brand mb-o h1">Create Sale</span>
+        </nav>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="container">
+                    <div class="list-group-itemName list-group-itemName-action active">ItemName</div> 
+                    <div class="panel-body bg-dark" style="color:green;">
+                        <form id="frm project">
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="itemName" id="itemName" value="Jacket">
+                                    <label>Jacket</label>
+
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="itemName"  value="Jeans Trouser">
+                                    <label>Jeans Trouser</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="itemName"  value="Shirt">
+                                    <label>Shirt</label>
+                                </div>
+                            </div>
+
+
+
+                        </form>
+                    
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+
+                <div class="container">
+                    <div class="list-group-itemName list-group-itemName-action active">Type</div> 
+                    <div class="panel-body bg-dark" style="color: blue;">
+                        <form id="frm-project">
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="type"  value="leather" checked="checkbox">
+                                    <label>Leather</label>
+                                </div>
+                            
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="type"  value="jeans" checked="checkbox">
+                                    <label>Jeans</label>
+                                </div>
+                                
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="type" id="type" value="long-sleeved" checked="checkbox">
+                                        <label>Long-sleeved</label>
+                                    </div>
+                                </div>
+                        </form>
+                    
+                    </div>
+                <div>
+                <label>Qty</label>
+                <input type="number" id="qty" name="qty" placeholder="Qty" class="form-control" required>
+            </div>
+            <br>
+            <div>
+
+                <input type="button" class="btn btn-info" value="ADD">
+                <input type="button" class="btn btn-warning" value="Reset" name="reset" id="reset">
+
+            </div>
+            <br>
+            <div>
+                <label>Total</label>
+                <input type="text" style="color: yellow; background: black" id="total" name="total" placeholder="Total">
+            </div>
+
+
+        </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="container" >
+                    <div class="list-group-itemName list-group-itemName-action active">AddSales</div>
+                    <table id="tbl-sales" class="table table-dark table-bordered" cellspacing="0" width="100%" align-center="center">
+                        <thead>
+                            <tr>
+                                <th>Delete</th>
+                                <th>ItemName</th>
+                                <th>Price</th>
+                                <th>Qty</th>
+                                <th>Total</th>
+                            </tr>
+                        <tbody>
+                        </tbody>
+
+                    </table> 
+                </div>
+            </div>
+        </div>
+        <script type="text/css" src="component/jquery/jquery.js"></script>
+        <script type="text/css" src="component/jquery/jquery.min.js"></script>
+
+        <script type="text/javascript">
+        var total=0;
+        var tot=0;
+        $(document).ready(function(){
+            $("type[type='button']").click(function(){
+            var radio1=$("input[name='itemName']:checked").val();
+            var radio2=$("input[name='type']:checked").val();
+            var price=null;
+            if(radio1=="Jacket")
+            {
+
+                if(radio2=="leather")
+                {
+                    price=1000;
+                }
+                else if(radio2=="jeans")
+                {
+                    price=1500;
+                }
+                else if(radio2="long-sleeved")
+                {
+                    price=1000;
+                }
+            }
+            else if (radio1=="Jeans Trouser")
+            if (radio2=="leather")
+            {
+                price=2000;
+
+            }
+            else if(radio2=="jeans")
+            {
+                price=1000;
+            }
+            else if(radio2=="long-sleeved")
+            {
+                price=8000;
+            }
+        
+        else if (radio1=="Shirt")
+            {
+
+                if(radio2=="leather")
+                {
+                    price=2000;
+                }
+                else if(radio2=="jeans")
+                {
+                    price=2500;
+                }
+                else if(radio2="long-sleeved")
+                {
+                    price=800;
+                }
+            }
+            var qty=$('#qty').val();
+            tot=qty * price;
+
+            var table1=
+            "<tr>"+
+                "<td> <button type='button' name='record' class='btn btn-warning' onclick='deleterow(this)'>Delete"
+                    "<td>" + radio1 + ""+radio2 +"</td>"+
+                    "<td>" +price + "</td>"+
+                    "<td>" + qty+"</td>"+
+                    "<td>" + tot + "</td>" +
+                    "</tr>";
+                    total +=Number(tot);
+                    $('#total').val(total);
+                    $("table tbody").append(table1);
+
+
+
+        });
+    });
+        
+    
+
+        function deleterow(e)
+        {
+            total_cost=parseInt($(e).parent().parent().find('td:last').text,10);
+            total-=total_cost;
+            $('#total').val(total);
+            $(e).parent().parent().remove();
+
+        }
+        $('#reset').click(function()
+        {
+            location.reload();
+        }
+        
+        );
+        </script>
+
+    </body>
+</html>

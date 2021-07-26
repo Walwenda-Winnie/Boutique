@@ -1,0 +1,92 @@
+<div class="col-md-7 offset-md-8">
+    <form id="order-form" class="smart-form" >
+        <header>
+          Update Sales Information
+        </header>
+      
+        <fieldset>
+          <div class="row">
+            <section class="col col-6">
+              <label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+                <input type="email" name="customeremailid" placeholder="CustomerEmailId"/>
+              </label>
+            </section>
+            <section class="col col-6">
+              <label class="input"> <i class="icon-append fa fa-cube"></i>
+                <input type="text" name="itemName" placeholder="Item Name"/>
+              </label>
+            </section>
+          </div>
+          
+          <div class="row">
+            <section class="col col-6">
+              <label class="input"> <i class="icon-append fa fa-cubes"></i>
+                <input type="text" name="amount" placeholder="Amount"/>
+              </label>
+            </section>
+      
+          <div class="row">
+            <section class="col col-6">
+              <label class="input"> <i class="icon-append fa fa-cubes"></i>
+                <input type="text" name="description" placeholder="Description"/>
+              </label>
+            </section>
+
+            <section class="col col-6">
+                <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                  <input type="text" name="date" placeholder="Date Sold">
+                </label>
+              </section>
+            <section class="col col-6">
+              <label class="input"> <i class="icon-append fa fa-money"></i>
+                <input type="text" name="price" placeholder="Price">
+              </label>
+            </section>
+          </div>
+            
+          <div class="row">
+            <section class="col col-6">
+              <label class="input"> <i class="icon-append fa fa-cubes"></i>
+                <input type="text" name="sellingPrice" placeholder="Selling Price"/>
+              </label>
+            </section>
+
+            <section class="col col-6">
+                <label class="input"> <i class="icon-append fa fa-money"></i>
+                  <input type="text" name="total" placeholder="Total">
+                </label>
+              </section>
+              <section class="col col-6">
+                <label class="input"> <i class="icon-append fa fa-cube"></i>
+                  <input type="text" name="type" placeholder="Type"/>
+                </label>
+              </section>
+    
+          </div>
+      
+        <fieldset>
+          <div class="row">
+            <section class="col col-6">
+              <label class="select">
+                <select name="paymentMethod">
+                  <option value="0" disabled>Payment Method</option>
+                  <option value="1">cash</option>
+                  <option value="2">check</option>
+                  <option value="3">m-pesa</option>
+                  <option value="4">credit</option>
+                  
+                </select> <i></i> </label>
+            </section>
+        
+          </div>
+      
+          <section>
+            <sa-file-input></sa-file-input>
+          </section>
+      
+        </fieldset>
+        <footer>
+            <button class="btn btn-success" type="submit">Submit</button>
+        </footer>
+    
+      

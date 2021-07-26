@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Product List</h2>
+    <p>Get all the products being sold here:</p>            
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Product id</th>
+          <th>Product Name</th>
+          <th>Product Description </th>
+          <th>Product Price </th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr >
+          <td>{{product.id}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.description}}</td>
+          <td>{{product.price}}</td>
+          
+        </tr>
+       
+      </tbody>
+    </table>
+    <button type="button" class="btn btn-primary" (click)="gotolist">Back</button>
+  </div>

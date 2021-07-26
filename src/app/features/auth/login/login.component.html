@@ -1,0 +1,51 @@
+<div class="container  bg-img" >
+  
+  <form #loginform="ngForm"(ngSubmit)="loginUser()"  class="form-1">
+
+    {{loginform.form.valid}}
+    <small class="text-danger">{{msg}}</small>
+
+    <h2>User Login :</h2>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" placeholder="Enter email" name="email" [(ngModel)]="user.emailId" required 
+      pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z_]{2,3}$"#email="ngModel"
+      [class.is-invalid]="email.invalid && email.touched"  ><i class="icon-user icon-large"></i>
+
+ <!--<small class="text-danger"[class.d-none]="email.valid || email.untouched">Email Id is required field</small>-->
+ <div *ngIf="email.errors &&(email.invalid&& email.touched)" >
+
+  <small class="text-danger"*ngIf="email.errors.required" >Email Id is required field</small>
+  <small class="text-danger" *ngIf="email.errors.pattern">Enter the valid Email Id</small>
+ 
+ </div>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control"  placeholder="Enter password" name= "password" [(ngModel)]="user.password" #password="ngModel" required
+      [class.is-invalid]="password.invalid && password.touched">  <i class="icon-lock icon-large"></i>
+      <small class="text-danger"[class.d-none]="password.valid || password.untouched">Password is required field</small>
+      
+      
+      
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox"> Remember me</label>
+    </div>
+    <button [disabled]="loginform.form.invalid"type="submit" class="btn btn-info">Login</button>
+
+    <div class="note">
+      <a routerLink="/auth/forgot-password" class="float-right btextual" >Forgot password?</a>
+    </div>
+    <small class="float-right btextual" [routerLink]="['/register']">New user ? Register here</small>
+    <br><br><br>
+    <footer ><h2> <span
+      class="badge inbox-badge bg-color-blue">v18.1</span> Built on 27/03/2021 </h2> </footer>
+  
+  </form>
+  
+  <!--<small class="float-right" (click)="gotoregister()"> New user ? Register here</small>-->
+  
+<br>
+</div>
+<br><br><br><br><br><br>

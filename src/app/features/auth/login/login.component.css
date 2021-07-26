@@ -1,0 +1,68 @@
+.form-1 {
+    /* Size & position */
+    width: 270px;
+    height: 450px;
+    margin: 60px auto 30px;
+    padding: 10px;
+    position: relative; /* For the submit button positioning */
+
+    /* Styles */
+    box-shadow: 
+        0 0 1px rgba(0, 0, 0, 0.3), 
+        0 3px 7px rgba(0, 0, 0, 0.3), 
+        inset 0 1px rgba(255,255,255,1),
+        inset 0 -3px 2px rgba(0,0,0,0.25);
+    border-radius: 5px;
+    background: linear-gradient(rgb(49, 0, 128),rgb(255, 47, 245) 18%);
+   
+}
+
+.form-1 .field {
+    position: relative; /* For the icon positioning */
+}
+.h2{
+    color: rgb(73, 128, 0);
+}
+.form-1 .field i {
+    /* Size and position */
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    height: 36px;
+    width: 36px;
+
+    /* Line */
+    border-right: 1px solid violet;
+    box-shadow: 1px 0 0 rgba(255, 255, 255, 0.7);
+
+    /* Styles */
+    color: rgb(255, 192, 197);
+    text-align: center;
+    line-height: 42px;
+    transition: all 0.3s ease-out;
+    pointer-events: none;
+}
+
+.bg-img {
+    
+    /* The image used */
+  
+  
+    /* Control the height of the image */
+    min-height: 380px;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    background-image: url('assets/img/boutique/sunyu-kim-VGZyA-NNapw-unsplash.jpg'); background-size: 100% 100%;
+
+  }
+  #footer h2{
+
+    color:cyan;
+    
+    font-family:  Arial;
+    
+    }

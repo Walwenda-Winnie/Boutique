@@ -1,0 +1,203 @@
+<div class ="container">
+    <div class="card mt-5" style="align-items: center;">
+        <h1>Delivery Information</h1>
+        <div class="card  mt-5" style="padding: 20px;">DELIVERIES</div>
+
+        <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" class="form-inline" role="form">
+
+            <div class="form-group">
+
+                <label for="saleId">Sale Id :</label>
+                <input type="number" #saleId (ngModel)="saleId " name="saleId" id="saleId" class="form-control" placeholder="Sale Id">
+            </div>
+            
+            <div class="form-group">
+
+                <label for="firstName">First Name :</label>
+                <input type="text" #firstName (ngModel)="firstName " name="firstName" id="firstName" class="form-control" placeholder="First Name">
+            </div>
+            
+            <div class="form-group">
+
+                <label for="lastName">Last Name :</label>
+                <input type="text" #lastName (ngModel)="lastName " name="lastName" id="lastName" class="form-control" placeholder="Last Name">
+            </div>
+            <br><br>
+            <div class="form-group">
+
+                <label for="deliveryEmployeeName">Delivery Employee Name :</label>
+                <input type="text" #deliveryEmployeeName (ngModel)="deliveryEmployeeName " name="deliveryEmployeeName" id="deliveryEmployeeName" class="form-control" placeholder="Delivery Employee Name">
+            </div>
+            
+            <div class="form-group">
+
+                <label for="meansofDelivery">Means of Delivery:</label>
+                <input type="text" #meansofDelivery (ngModel)="meansofDelivery " name="meansofDelivery" id="meansofDelivery" class="form-control" placeholder="Means of Delivery">
+            </div>
+            <br><br>
+            
+            <div class="form-group">
+
+                <label for="address">Customer Address :</label>
+                <input type="text" #address (ngModel)="address " name="address" id="address" class="form-control" placeholder="Address">
+            </div>
+            <div class="form-group">
+
+                <label for="saleDate">Sale Date :</label>
+                <input type="date" #saleDate (ngModel)="saleDate " name="saleDate" id="saleDate" class="form-control" placeholder="Sale Date">
+            </div>
+            <div class="form-group">
+
+                <label for="locations">Customer Location :</label>
+                <input type="text" #locations (ngModel)="locations " name="locations" id="locations" class="form-control" placeholder=" Customer location">
+            </div>
+            <br><br>
+  
+            <div class="form-group">
+
+                <label for="customerEmail"> Customer Email :</label>
+                <input type="customerEmail" #customerEmail (ngModel)="customerEmail " name="customerEmail" id="customerEmail" class="form-control" placeholder="Customer Email">
+            </div>
+            <br><br>
+            <div class="form-group">
+
+                <input type="submit" value="Register" class="btn btn-primary w-100">
+            </div>
+
+                    
+                
+               
+    
+
+    
+
+<br><br><br><br><br><br><br><br>
+
+
+    <div class="mt-5">
+        <table class="table table-bordered">
+            <thead class="thead">
+                <tr>
+                    <th>Sale Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Delivery Employee Name</th>
+                    <th>Means of Delivery</th>
+                    <th>Customer Address</th>
+                
+                    <th>Sale Date</th>
+                    <th>Customer Location</th>
+                    <th>Customer Email</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+
+
+
+                </tr>
+
+            </thead>
+            <tbody class="tbody">
+                <tr *ngFor="let delivery of deliveryDetails">
+                    <td>{{delivery.saleId}}</td>
+                    <td>{{delivery.firstName}}</td>
+                    <td>{{delivery.lastName}}</td>
+                    <td>{{delivery.deliveryEmployeeName}}</td>
+                    <td>{{delivery.meansofDelivery}}</td>
+                    <td>{{delivery.address}}</td>
+                   
+                    <td>{{delivery.saleDate}}</td>
+                    <td>{{delivery.locations}}</td>
+                    <td>{{delivery.customerEmail}}</td>
+                   
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"(click)="edit(delivery)">Edit</button></td>
+
+                    <td><button type="button" class="btn btn-danger" (click)="deleteDelivery(delivery)">Delete</button></td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Delivery</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+        </div> 
+        <div class="modal-body">
+
+            <form #updateForm="ngForm" (ngSubmit)="updateDelivery()">
+                <div class="form-group">
+    
+                    <label for="id"> Id :</label>
+                    <input type="number" disabled #id [(ngModel)]="deliveryToUpdate.id " name="id" id="id" class="form-control" placeholder=" Id">
+                </div>
+
+                <div class="form-group">
+    
+                    <label for="saleId">Sale Id :</label>
+                    <input type="number" #saleId [(ngModel)]="deliveryToUpdate.saleId " name="saleId" id="saleId" class="form-control" placeholder="Sale Id">
+                </div>
+                
+                <div class="form-group">
+    
+                    <label for="firstName">First Name :</label>
+                    <input type="text" #firstName [(ngModel)]="deliveryToUpdate.firstName " name="firstName" id="firstName" class="form-control" placeholder="First Name">
+                </div>
+                
+                <div class="form-group">
+    
+                    <label for="lastName">Last Name :</label>
+                    <input type="text" #lastName [(ngModel)]="deliveryToUpdate.lastName " name="lastName" id="lastName" class="form-control" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+    
+                    <label for="deliveryEmployeeName">Delivery Employee Name :</label>
+                    <input type="text" #deliveryEmployeeName [(ngModel)]="deliveryToUpdate.deliveryEmployeeName " name="deliveryEmployeeName" id="deliveryEmployeeName" class="form-control" placeholder="Delivery Employee Name">
+                </div>
+                       
+                <div class="form-group">
+    
+                    <label for="meansofDelivery">Means of Delivery :</label>
+                    <input type="text" #meansofDelivery [(ngModel)]="deliveryToUpdate.meansofDelivery " name="meansofDelivery" id="meansofDelivery" class="form-control" placeholder="Means of Delivery">
+                </div>
+            
+                
+                <div class="form-group">
+    
+                    <label for="address">Customer Address :</label>
+                    <input type="text" #address [(ngModel)]="deliveryToUpdate.address " name="address" id="address" class="form-control" placeholder="Address">
+                </div>
+               
+                <div class="form-group">
+    
+                    <label for="saleDate">Sale Date :</label>
+                    <input type="date" #saleDate [(ngModel)]="deliveryToUpdate.saleDate " name="saleDate" id="saleDate" class="form-control" placeholder="Sale Date">
+                </div>
+                <div class="form-group">
+    
+                    <label for="locations">Customer Location :</label>
+                    <input type="text" #locations [(ngModel)]="deliveryToUpdate.locations " name="locations" id="locations" class="form-control" placeholder="location">
+                </div>
+                <div class="form-group">
+    
+                    <label for="email"> Customer Email :</label>
+                    <input type="email" #email [(ngModel)]="deliveryToUpdate.email " name="email" id="email" class="form-control" placeholder="Email">
+                </div>
+        
+                <div class="form-group">
+    
+                    <input type="submit" value="Update" class="btn btn-primary w-100">
+                </div>
+    
+            </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,158 @@
+<div id="content">
+    <div class="row">
+      <sa-big-breadcrumbs [items]="['Sales', 'sale-list']" icon="shopping-cart"
+                          class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
+  
+      <sa-shopping-cart></sa-shopping-cart>
+    </div>
+    <!--
+        The ID "widget-grid" will start to initialize all widgets below
+        You do not need to use widgets if you dont want to. Simply remove
+        the <section></section> and you can use wells or panels instead
+        -->
+    <!-- widget grid -->
+    <sa-widgets-grid>
+      <!-- row -->
+      <div class="row">
+        <!-- NEW WIDGET START -->
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <!-- Widget ID (each widget will need unique ID)-->
+          <div sa-widget class="well">
+            <!-- widget options:
+                usage: <div sa-widget id="wid-id-0" [editbutton]="false">
+                [colorbutton]="false"
+                [editbutton]="false"
+                [togglebutton]="false"
+                [deletebutton]="false"
+                [fullscreenbutton]="false"
+                [custombutton]="false"
+                [collapsed]="true"
+                [sortable]="false"
+            >
+            <header>
+              <span class="widget-icon"> <i class="fa fa-comments"></i> </span>
+  
+              <h2>Order List </h2>
+            </header>
+            <!-- widget div-->
+            <div>
+              <!-- widget content -->
+              <div class="widget-body no-padding">
+  
+                <sa-datatable
+                  [options]="{
+                    
+                    columns: [
+                      {data: 'itemName'},
+                      {data: 'qty'},
+                      {data: 'date'},
+                      {data: 'type'},
+                      {data: 'price'},
+                      {data: 'customeremailid'},
+                      {data: 'sellingPrice'},
+                      {data: 'total'},
+
+                      {data: 'actions'}
+                      
+                    ]
+                }"
+                  filter="true" paginationLength="true"
+                  tableClass="display projects-table table table-striped table-bordered table-hover"
+                  width="100%">
+                  <thead>
+                  <tr>
+                    <th class="hasinput" style="width:10%">
+                      <input type="text" class="form-control" placeholder="Find ItemName">
+                    </th>
+                    <th class="hasinput" style="width:12%">
+                      <input type="number" class="form-control" placeholder="Filter Qty">
+                    </th>
+                    <th class="hasinput icon-addon">
+                      <input id="dateselect_filter" type="text" placeholder="Date"
+                             class="form-control datepicker" data-dateformat="yy/mm/dd">
+                      <label for="dateselect_filter" class="glyphicon glyphicon-calendar no-margin padding-top-15"
+                             rel="tooltip" title="" data-original-title="Date"></label>
+                    </th>
+                    <th class="hasinput">
+                      <input type="text" class="form-control" placeholder="Type">
+                    </th>
+                
+
+        
+                   
+                    <th class="hasinput" style="width:12%">
+                      <input type="text" class="form-control" placeholder="Price Filter">
+
+                    </th>
+                    
+                    <th class="hasinput" style="width:14%">
+                      <input type="text" class="form-control" placeholder="CustomerEmailId Filter">
+                    </th>
+                    
+                    <th class="hasinput">
+                        <input type="text" class="form-control" placeholder="SellingPrice">
+                      </th>
+                      <th class="hasinput" style="width:12%">
+                        <input type="text" class="form-control" placeholder="Total Filter">
+                      </th>
+                      <th class="hasinput" style="width:12%">
+                        <input type="text" class="form-control" placeholder="Actions Filter">
+                      </th>
+
+                    
+  
+                  </tr>
+                  <tr>
+                    <th data-class="expand">ItemName</th>
+            
+                    <th data-hide="phone, tablet">Qty</th>
+                    <th data-hide="phone, tablet">Date</th>
+                    <th data-hide="phone,tablet">Type</th>
+                    <th data-hide="phone,tablet">Price</th>
+                    <th data-hide="phone,tablet">CustomerEmailId</th>
+                    <th data-hide="phone,tablet">SellingPrice</th>
+          
+                    <th data-hide="phone,tablet">Total</th>
+                    <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor = "let sale of sales">
+                      <td> {{ sale.itemName}} </td>
+                      <td> {{ sale.qty}} </td>
+                      <td> {{ sale.date}} </td>
+                      <td> {{ sale.type}} </td>
+                      <td> {{ sale.price}} </td>
+                      <td> {{ sale.customeremailid}} </td>
+                      <td> {{ sale.sellingPrice}} </td>
+                      <td> {{ sale.total}} </td>
+                      <td>
+                          <button (click)="updateSale(sale.id)" class="btn btn-info"> Update</button>
+                          <button (click)= "deleteSale(sale.id)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+                          <button (click)= "saleDetails(sale.id)" class="btn btn-info" style="margin-left: 10px">View</button>
+                      </td>
+                      
+          
+          
+          
+                  </tr>
+
+
+                  </tbody>
+
+  
+                </sa-datatable>
+              </div>
+              <!-- end widget content -->
+            </div>
+            <!-- end widget div -->
+          </div>
+          <!-- end widget -->
+        </article>
+        <!-- WIDGET END -->
+      </div>
+      <!-- end row -->
+    </sa-widgets-grid>
+    <!-- end widget grid -->
+  </div>
+  
